@@ -20,7 +20,7 @@ public class GimmeEvent extends AbstractExtension {
     registerRpc(new GimmeEventServerRpcImpl());
   }
 
-  private final class GimmeEventServerRpcImpl implements GimmeEventServerRpc {
+  private static final class GimmeEventServerRpcImpl implements GimmeEventServerRpc {
     @Override
     public void onabort(final DomEvent event) {}
 
