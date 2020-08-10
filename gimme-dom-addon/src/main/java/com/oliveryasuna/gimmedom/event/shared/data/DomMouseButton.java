@@ -1,5 +1,6 @@
 package com.oliveryasuna.gimmedom.event.shared.data;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Objects;
  * @author Oliver Yasuna
  * @since 1.0.0
  */
-public enum DomMouseButton {
+public enum DomMouseButton implements Serializable {
   MAIN_BUTTON(0),
   AUXILIARY_BUTTON(1),
   SECONDARY_BUTTON(2),

@@ -28,6 +28,7 @@ public final class DomEventBuilder {
     result.setType(DomEventType.getById(nativeEvent.getType()));
 
     return result;
+
   }
 
   public static DomMouseEvent buildDomMouseEvent(final NativeEvent nativeEvent) {
