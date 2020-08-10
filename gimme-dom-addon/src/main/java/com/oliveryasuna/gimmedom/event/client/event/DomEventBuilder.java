@@ -8,7 +8,7 @@ import com.oliveryasuna.gimmedom.event.shared.event.*;
 /**
  * @author Oliver Yasuna
  */
-public class DomEventBuilder {
+public final class DomEventBuilder {
   public static DomEvent buildDomEvent(final NativeEvent nativeEvent) {
     final DomEvent result = new DomEvent();
     result.setType(DomEventType.getById(nativeEvent.getType()));
