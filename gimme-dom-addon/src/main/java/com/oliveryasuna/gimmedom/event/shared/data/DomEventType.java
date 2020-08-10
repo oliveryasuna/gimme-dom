@@ -106,7 +106,7 @@ public enum DomEventType implements Serializable {
     return null;
   }
 
-  private String id;
+  private final String id;
 
   DomEventType(final String id) { this.id = id; }
 
