@@ -40,7 +40,6 @@
 
     <vaadin.version>8.11.0</vaadin.version>
 
-    <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
     <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
     <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
     <maven-war-plugin.version>2.6</maven-war-plugin.version>
@@ -48,11 +47,4 @@
     <maven-source-plugin.version>2.4</maven-source-plugin.version>
     <maven-assembly-plugin.version>2.5.5</maven-assembly-plugin.version>
   </properties>
-
-  <scm>
-    <connection>scm:svn:http://127.0.0.1/dummy</connection>
-    <developerConnection>scm:svn:https://127.0.0.1/dummy</developerConnection>
-    <tag>HEAD</tag>
-    <url>http://127.0.0.1/dummy</url>
-  </scm>
 </project>
