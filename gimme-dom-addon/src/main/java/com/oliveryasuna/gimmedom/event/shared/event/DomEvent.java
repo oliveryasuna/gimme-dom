@@ -10,9 +10,10 @@ import java.io.Serializable;
  * @author Oliver Yasuna
  * @since 1.0.0
  */
+// TODO: Review. If any new fields are added then make sure ot update DomEventBuilder.
 public class DomEvent implements Serializable {
-  private DomEventType type;
-  private final long timeStamp = System.currentTimeMillis();
+  protected DomEventType type;
+  protected final long timeStamp = System.currentTimeMillis();
 
   // TODO: UIObject info.
   private boolean stopPropagation;
@@ -23,14 +24,14 @@ public class DomEvent implements Serializable {
   public final void setType(final DomEventType type) { this.type = type; }
 
   public final long getTimeStamp() { return timeStamp; }
-  
+
   public final boolean shouldStopPropagation() { return stopPropagation; }
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + "{" +
-        "type=" + type +
-        ", timeStamp=" + timeStamp +
-        '}';
+    return getClass().getSimpleName() + '{' +
+               "type=" + type +
+               ", timeStamp=" + timeStamp +
+               '}';
   }
 }

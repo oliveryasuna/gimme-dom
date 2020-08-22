@@ -19,6 +19,7 @@
 
   <properties>
     <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+    <jetty-maven-plugin.version>9.4.31.v20200723</jetty-maven-plugin.version>
   </properties>
 
   <dependencies>
@@ -46,9 +47,6 @@
     <resources>
       <resource>
         <directory>src/main/resources</directory>
-        <excludes>
-          <exclude>rebel.xml</exclude>
-        </excludes>
       </resource>
     </resources>
 
@@ -112,6 +110,19 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>${jetty-maven-plugin.version}</version>
+        <configuration>
+          <webApp>
+            <contextPath>/</contextPath>
+          </webApp>
+          <stopPort>9999</stopPort>
+          <stopKey>MAPS-STOP</stopKey>
+        </configuration>
       </plugin>
     </plugins>
   </build>

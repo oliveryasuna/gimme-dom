@@ -8,13 +8,14 @@ import java.io.Serializable;
  * @author Oliver Yasuna
  * @since 1.0.0
  */
+// TODO: Review. If any new fields are added then make sure ot update DomEventBuilder.
 public class DomKeyboardEvent extends DomUIEvent implements Serializable {
-  private boolean ctrlKey;
-  private boolean shiftKey;
-  private boolean altKey;
-  private boolean metaKey;
-  private int keyCode;
-  private int charCode;
+  protected boolean ctrlKey;
+  protected boolean shiftKey;
+  protected boolean altKey;
+  protected boolean metaKey;
+  protected int keyCode;
+  protected int charCode;
 
   public final boolean isCtrlKey() { return ctrlKey; }
   public final void setCtrlKey(final boolean ctrlKey) { this.ctrlKey = ctrlKey; }
@@ -36,15 +37,15 @@ public class DomKeyboardEvent extends DomUIEvent implements Serializable {
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + "{" +
-        "type='" + getType() + '\'' +
-        ", timeStamp=" + getTimeStamp() +
-        ", ctrlKey=" + ctrlKey +
-        ", shiftKey=" + shiftKey +
-        ", altKey=" + altKey +
-        ", metaKey=" + metaKey +
-        ", keyCode=" + keyCode +
-        ", charCode=" + charCode +
-        '}';
+    return getClass().getSimpleName() + '{' +
+               "type='" + getType() + '\'' +
+               ", timeStamp=" + getTimeStamp() +
+               ", ctrlKey=" + ctrlKey +
+               ", shiftKey=" + shiftKey +
+               ", altKey=" + altKey +
+               ", metaKey=" + metaKey +
+               ", keyCode=" + keyCode +
+               ", charCode=" + charCode +
+               '}';
   }
 }

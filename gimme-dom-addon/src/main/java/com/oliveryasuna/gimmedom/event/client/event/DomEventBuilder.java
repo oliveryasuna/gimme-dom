@@ -63,6 +63,34 @@ public final class DomEventBuilder {
     return result;
   }
 
+  public static DomWheelEvent buildDomWheelEvent(final NativeEvent nativeEvent) {
+    final DomWheelEvent result = new DomWheelEvent();
+    result.setType(DomEventType.getById(nativeEvent.getType()));
+    result.setScreenX(nativeEvent.getScreenX());
+    result.setScreenY(nativeEvent.getScreenY());
+    result.setClientX(nativeEvent.getClientX());
+    result.setClientY(nativeEvent.getClientY());
+    result.setCtrlKey(nativeEvent.getCtrlKey());
+    result.setShiftKey(nativeEvent.getShiftKey());
+    result.setAltKey(nativeEvent.getAltKey());
+    result.setMetaKey(nativeEvent.getMetaKey());
+    result.setButton(DomMouseButton.getById(nativeEvent.getButton()));
+    result.setDeltaY(nativeEvent.getMouseWheelVelocityY());
+
+    return result;
+  }
+
+  public static DomTouchEvent buildDomTouchEvent(final NativeEvent nativeEvent) {
+    final DomTouchEvent result = new DomTouchEvent();
+    result.setType(DomEventType.getById(nativeEvent.getType()));
+    result.setCtrlKey(nativeEvent.getCtrlKey());
+    result.setShiftKey(nativeEvent.getShiftKey());
+    result.setAltKey(nativeEvent.getAltKey());
+    result.setMetaKey(nativeEvent.getMetaKey());
+
+    return result;
+  }
+
   public static DomKeyboardEvent buildDomKeyboardEvent(final NativeEvent nativeEvent) {
     final DomKeyboardEvent result = new DomKeyboardEvent();
     result.setType(DomEventType.getById(nativeEvent.getType()));

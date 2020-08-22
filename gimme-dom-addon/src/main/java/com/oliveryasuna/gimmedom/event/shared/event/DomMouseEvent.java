@@ -10,16 +10,17 @@ import java.io.Serializable;
  * @author Oliver Yasuna
  * @since 1.0.0
  */
+// TODO: Review. If any new fields are added then make sure ot update DomEventBuilder.
 public class DomMouseEvent extends DomUIEvent implements Serializable {
-  private long screenX;
-  private long screenY;
-  private long clientX;
-  private long clientY;
-  private boolean ctrlKey;
-  private boolean shiftKey;
-  private boolean altKey;
-  private boolean metaKey;
-  private DomMouseButton button;
+  protected long screenX;
+  protected long screenY;
+  protected long clientX;
+  protected long clientY;
+  protected boolean ctrlKey;
+  protected boolean shiftKey;
+  protected boolean altKey;
+  protected boolean metaKey;
+  protected DomMouseButton button;
 
   public final long getScreenX() { return screenX; }
   public final void setScreenX(final long screenX) { this.screenX = screenX; }
@@ -42,18 +43,18 @@ public class DomMouseEvent extends DomUIEvent implements Serializable {
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + "{" +
-        "type='" + getType() + '\'' +
-        ", timeStamp=" + getTimeStamp() +
-        ", screenX=" + screenX +
-        ", screenY=" + screenY +
-        ", clientX=" + clientX +
-        ", clientY=" + clientY +
-        ", ctrlKey=" + ctrlKey +
-        ", shiftKey=" + shiftKey +
-        ", altKey=" + altKey +
-        ", metaKey=" + metaKey +
-        ", button=" + button +
-        '}';
+    return getClass().getSimpleName() + '{' +
+               "type='" + getType() + '\'' +
+               ", timeStamp=" + getTimeStamp() +
+               ", screenX=" + screenX +
+               ", screenY=" + screenY +
+               ", clientX=" + clientX +
+               ", clientY=" + clientY +
+               ", ctrlKey=" + ctrlKey +
+               ", shiftKey=" + shiftKey +
+               ", altKey=" + altKey +
+               ", metaKey=" + metaKey +
+               ", button=" + button +
+               '}';
   }
 }

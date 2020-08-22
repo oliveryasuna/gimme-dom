@@ -62,7 +62,7 @@
             <manifestEntries>
               <Vaadin-Package-Version>1</Vaadin-Package-Version>
               <Vaadin-License-Title>${Vaadin-License-Title}</Vaadin-License-Title>
-              <Vaadin-Widgetsets>com.oliveryasuna.vaadin.common.Widgetset</Vaadin-Widgetsets>
+              <Vaadin-Widgetsets>com.oliveryasuna.gimmedom.Widgetset</Vaadin-Widgetsets>
             </manifestEntries>
           </archive>
         </configuration>

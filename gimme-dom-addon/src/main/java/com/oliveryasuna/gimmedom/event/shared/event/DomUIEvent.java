@@ -8,6 +8,6 @@ import java.io.Serializable;
  * @author Oliver Yasuna
  * @since 1.0.0
  */
-// TODO.
+// TODO: Review. If any new fields are added then make sure ot update DomEventBuilder.
 public class DomUIEvent extends DomEvent implements Serializable {
 }
