@@ -19,6 +19,7 @@ public final class Demo extends UI {
     final GimmeEvent gimmeEvent = new GimmeEvent(a);
 
     gimmeEvent.addClickListener(System.out::println);
+    gimmeEvent.addBlurListener(System.out::println);
 
     setContent(new VerticalLayout(a, b));
   }
