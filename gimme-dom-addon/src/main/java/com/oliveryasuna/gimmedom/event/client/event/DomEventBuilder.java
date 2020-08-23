@@ -6,7 +6,10 @@ import com.oliveryasuna.gimmedom.event.shared.data.DomMouseButton;
 import com.oliveryasuna.gimmedom.event.shared.event.*;
 
 /**
+ * For building {@link DomEvent}s.
+ *
  * @author Oliver Yasuna
+ * @since 1.0.0
  */
 public final class DomEventBuilder {
   public static DomEvent buildDomEvent(final NativeEvent nativeEvent) {

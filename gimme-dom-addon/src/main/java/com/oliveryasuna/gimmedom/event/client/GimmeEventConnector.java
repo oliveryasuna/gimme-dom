@@ -10,6 +10,7 @@ import com.vaadin.client.ServerConnector;
 import com.vaadin.client.communication.RpcProxy;
 import com.vaadin.client.event.InputEvent;
 import com.vaadin.client.extensions.AbstractExtensionConnector;
+import com.vaadin.shared.ui.Connect;
 
 /**
  * The {@link GimmeEvent} connector.
@@ -17,6 +18,7 @@ import com.vaadin.client.extensions.AbstractExtensionConnector;
  * @author Oliver Yasuna
  * @since 1.0.0
  */
+@Connect(GimmeEvent.class)
 public class GimmeEventConnector extends AbstractExtensionConnector {
   protected final GimmeEventServerRpc serverRpc = RpcProxy.create(GimmeEventServerRpc.class, this);
 
