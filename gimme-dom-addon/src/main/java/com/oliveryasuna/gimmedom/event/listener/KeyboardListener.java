@@ -1,35 +1,33 @@
 package com.oliveryasuna.gimmedom.event.listener;
 
 import com.oliveryasuna.gimmedom.event.event.KeyboardEvent;
+import com.vaadin.util.ReflectTools;
 
-@FunctionalInterface
-public interface KeyboardListener extends Listener<KeyboardEvent> {
-  void onKeyboardEvent(final KeyboardEvent event);
+import java.lang.reflect.Method;
 
-  @Override
-  default void dispatch(final KeyboardEvent event) { onKeyboardEvent(event); }
-
-  @FunctionalInterface
-  interface KeyDown extends Listener<KeyboardEvent.KeyDown> {
-    void onKeyDownEvent(KeyboardEvent.KeyDown event);
-
-    @Override
-    default void dispatch(final KeyboardEvent.KeyDown event) { onKeyDownEvent(event); }
+public class KeyboardListener {
+  private KeyboardListener() {
+    throw new UnsupportedOperationException("Class cannot be instantiated.");
   }
 
   @FunctionalInterface
-  interface KeyPress extends Listener<KeyboardEvent.KeyPress> {
-    void onKeyPressEvent(KeyboardEvent.KeyPress event);
+  public interface KeyDown {
+    Method METHOD = ReflectTools.findMethod(KeyDown.class, "keyDown", KeyboardEvent.KeyDown.class);
 
-    @Override
-    default void dispatch(final KeyboardEvent.KeyPress event) { onKeyPressEvent(event); }
+    void keyDown(KeyboardEvent.KeyDown event);
   }
 
   @FunctionalInterface
-  interface KeyUp extends Listener<KeyboardEvent.KeyUp> {
-    void onKeyUpEvent(KeyboardEvent.KeyUp event);
+  public interface KeyPress {
+    Method METHOD = ReflectTools.findMethod(KeyPress.class, "keyPress", KeyboardEvent.KeyPress.class);
 
-    @Override
-    default void dispatch(final KeyboardEvent.KeyUp event) { onKeyUpEvent(event); }
+    void keyPress(KeyboardEvent.KeyPress event);
+  }
+
+  @FunctionalInterface
+  public interface KeyUp {
+    Method METHOD = ReflectTools.findMethod(KeyUp.class, "keyUp", KeyboardEvent.KeyUp.class);
+
+    void keyUp(KeyboardEvent.KeyUp event);
   }
 }

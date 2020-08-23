@@ -1,19 +1,19 @@
 package com.oliveryasuna.gimmedom.event.listener;
 
 import com.oliveryasuna.gimmedom.event.event.WheelEvent;
+import com.vaadin.util.ReflectTools;
 
-@FunctionalInterface
-public interface WheelListener extends Listener<WheelEvent> {
-  void onWheelEvent(WheelEvent event);
+import java.lang.reflect.Method;
 
-  @Override
-  default void dispatch(final WheelEvent event) { onWheelEvent(event); }
+public class WheelListener {
+  private WheelListener() {
+    throw new UnsupportedOperationException("Class cannot be instantiated.");
+  }
 
   @FunctionalInterface
-  interface MouseWheel extends Listener<WheelEvent.MouseWheel> {
-    void onMouseWheelEvent(WheelEvent.MouseWheel event);
+  public interface MouseWheel {
+    Method METHOD = ReflectTools.findMethod(MouseWheel.class, "mouseWheel", WheelEvent.MouseWheel.class);
 
-    @Override
-    default void dispatch(final WheelEvent.MouseWheel event) { onMouseWheelEvent(event); }
+    void mouseWheel(WheelEvent.MouseWheel event);
   }
 }

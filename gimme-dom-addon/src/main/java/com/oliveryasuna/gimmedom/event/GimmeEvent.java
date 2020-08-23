@@ -1,16 +1,12 @@
 package com.oliveryasuna.gimmedom.event;
 
-import com.oliveryasuna.gimmedom.event.event.Event;
 import com.oliveryasuna.gimmedom.event.event.MouseEvent;
-import com.oliveryasuna.gimmedom.event.listener.Listener;
 import com.oliveryasuna.gimmedom.event.listener.MouseListener;
 import com.oliveryasuna.gimmedom.event.shared.GimmeEventServerRpc;
 import com.oliveryasuna.gimmedom.event.shared.event.*;
 import com.vaadin.server.AbstractExtension;
+import com.vaadin.shared.Registration;
 import com.vaadin.ui.AbstractComponent;
-
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 /**
  * An extension to hook into more DOM events.
@@ -21,29 +17,15 @@ import java.util.Set;
 public class GimmeEvent extends AbstractExtension {
   protected final AbstractComponent component;
 
-  // TODO: Should not be instantiated until needed. Then again, this will mean the first time versus subsequent times a listener is added will take different
-  //  amount of times.
-  private final Set<MouseListener.Click> clickListeners = new LinkedHashSet<>();
-
   public GimmeEvent(final AbstractComponent component) {
     extend(this.component = component);
 
     registerRpc(new GimmeEventServerRpcImpl());
   }
 
-  private <T extends Event> void fireEvent(final Set<? extends Listener<T>> listeners, final T event) {
-    if(listeners == null) return;
-
-    for(final Listener<T> listener : listeners) {
-      listener.dispatch(event);
-
-      if(event.getDomEvent().shouldStopPropagation()) return;
-    }
+  public Registration addClickListener(final MouseListener.Click listener) {
+    return addListener(MouseEvent.Click.class, listener, MouseListener.Click.METHOD);
   }
-
-  protected void fireClick(final DomMouseEvent domEvent) { fireEvent(clickListeners, new MouseEvent.Click(component, domEvent)); }
-  public boolean addClickListener(final MouseListener.Click listener) { return clickListeners.add(listener); }
-  public boolean removeClickListener(final MouseListener.Click listener) { return clickListeners.remove(listener); }
 
   private final class GimmeEventServerRpcImpl implements GimmeEventServerRpc {
     @Override
@@ -80,7 +62,7 @@ public class GimmeEvent extends AbstractExtension {
     public void onchange(final DomEvent domEvent) {}
 
     @Override
-    public void onclick(final DomMouseEvent domEvent) { fireClick(domEvent); }
+    public void onclick(final DomMouseEvent domEvent) { fireEvent(new MouseEvent.Click(component, domEvent)); }
 
     @Override
     public void oncontextmenu(final DomMouseEvent domEvent) {}

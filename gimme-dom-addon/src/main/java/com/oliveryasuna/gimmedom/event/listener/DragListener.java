@@ -1,67 +1,61 @@
 package com.oliveryasuna.gimmedom.event.listener;
 
 import com.oliveryasuna.gimmedom.event.event.DragEvent;
+import com.vaadin.util.ReflectTools;
 
-@FunctionalInterface
-public interface DragListener extends Listener<DragEvent> {
-  void onDragEvent(DragEvent event);
+import java.lang.reflect.Method;
 
-  @Override
-  default void dispatch(final DragEvent event) { onDragEvent(event); }
-
-  @FunctionalInterface
-  interface Drag extends Listener<DragEvent.Drag> {
-    void onDragEvent(DragEvent.Drag event);
-
-    @Override
-    default void dispatch(final DragEvent.Drag event) { onDragEvent(event); }
+public class DragListener {
+  private DragListener() {
+    throw new UnsupportedOperationException("Class cannot be instantiated.");
   }
 
   @FunctionalInterface
-  interface DragEnd extends Listener<DragEvent.DragEnd> {
-    void onDragEndEvent(DragEvent.DragEnd event);
+  public interface Drag {
+    Method METHOD = ReflectTools.findMethod(Drag.class, "drag", DragEvent.Drag.class);
 
-    @Override
-    default void dispatch(final DragEvent.DragEnd event) { onDragEndEvent(event); }
+    void drag(DragEvent.Drag event);
   }
 
   @FunctionalInterface
-  interface DragEnter extends Listener<DragEvent.DragEnter> {
-    void onDragEnterEvent(DragEvent.DragEnter event);
+  public interface DragEnd {
+    Method METHOD = ReflectTools.findMethod(DragEnd.class, "dragEnd", DragEvent.DragEnd.class);
 
-    @Override
-    default void dispatch(final DragEvent.DragEnter event) { onDragEnterEvent(event); }
+    void dragEnd(DragEvent.DragEnd event);
   }
 
   @FunctionalInterface
-  interface DragLeave extends Listener<DragEvent.DragLeave> {
-    void onDragLeaveEvent(DragEvent.DragLeave event);
+  public interface DragEnter {
+    Method METHOD = ReflectTools.findMethod(DragEnter.class, "dragEnter", DragEvent.DragEnter.class);
 
-    @Override
-    default void dispatch(final DragEvent.DragLeave event) { onDragLeaveEvent(event); }
+    void dragEnter(DragEvent.DragEnter event);
   }
 
   @FunctionalInterface
-  interface DragOver extends Listener<DragEvent.DragOver> {
-    void onDragOverEvent(DragEvent.DragOver event);
+  public interface DragLeave {
+    Method METHOD = ReflectTools.findMethod(DragLeave.class, "dragLeave", DragEvent.DragLeave.class);
 
-    @Override
-    default void dispatch(final DragEvent.DragOver event) { onDragOverEvent(event); }
+    void dragLeave(DragEvent.DragLeave event);
   }
 
   @FunctionalInterface
-  interface DragStart extends Listener<DragEvent.DragStart> {
-    void onDragStartEvent(DragEvent.DragStart event);
+  public interface DragOver {
+    Method METHOD = ReflectTools.findMethod(DragOver.class, "dragOver", DragEvent.DragOver.class);
 
-    @Override
-    default void dispatch(final DragEvent.DragStart event) { onDragStartEvent(event); }
+    void dragOver(DragEvent.DragOver event);
   }
 
   @FunctionalInterface
-  interface Drop extends Listener<DragEvent.Drop> {
-    void onDropEvent(DragEvent.Drop event);
+  public interface DragStart {
+    Method METHOD = ReflectTools.findMethod(DragStart.class, "dragStart", DragEvent.DragStart.class);
 
-    @Override
-    default void dispatch(final DragEvent.Drop event) { onDropEvent(event); }
+    void dragStart(DragEvent.DragStart event);
+  }
+
+  @FunctionalInterface
+  public interface Drop {
+    Method METHOD = ReflectTools.findMethod(Drop.class, "drop", DragEvent.Drop.class);
+
+    void drop(DragEvent.Drop event);
   }
 }

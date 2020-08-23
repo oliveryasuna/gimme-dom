@@ -5,76 +5,64 @@ import com.vaadin.util.ReflectTools;
 
 import java.lang.reflect.Method;
 
-@FunctionalInterface
-public interface MouseListener extends Listener<MouseEvent> {
-  void onMouseEvent(MouseEvent event);
-
-  @Override
-  default void dispatch(final MouseEvent event) { onMouseEvent(event); }
-
-  @FunctionalInterface
-  interface Click extends Listener<MouseEvent.Click> {
-    Method method = ReflectTools.findMethod(Click.class, "onClickEvent", MouseEvent.Click.class);
-
-    void onClickEvent(MouseEvent.Click event);
-
-    @Override
-    default void dispatch(final MouseEvent.Click event) { onClickEvent(event); }
+public class MouseListener {
+  private MouseListener() {
+    throw new UnsupportedOperationException("Class cannot be instantiated.");
   }
 
   @FunctionalInterface
-  interface ContextMenu extends Listener<MouseEvent.ContextMenu> {
-    void onContextMenuEvent(MouseEvent.ContextMenu event);
+  public interface Click {
+    Method METHOD = ReflectTools.findMethod(Click.class, "click", MouseEvent.Click.class);
 
-    @Override
-    default void dispatch(final MouseEvent.ContextMenu event) { onContextMenuEvent(event); }
+    void click(MouseEvent.Click event);
   }
 
   @FunctionalInterface
-  interface DoubleClick extends Listener<MouseEvent.DoubleClick> {
-    void onDoubleClickEvent(MouseEvent.DoubleClick event);
+  public interface ContextMenu {
+    Method METHOD = ReflectTools.findMethod(ContextMenu.class, "contextMenu", MouseEvent.ContextMenu.class);
 
-    @Override
-    default void dispatch(final MouseEvent.DoubleClick event) { onDoubleClickEvent(event); }
+    void contextMenu(MouseEvent.ContextMenu event);
   }
 
   @FunctionalInterface
-  interface MouseDown extends Listener<MouseEvent.MouseDown> {
-    void onMouseDownEvent(MouseEvent.MouseDown event);
+  public interface DoubleClick {
+    Method METHOD = ReflectTools.findMethod(DoubleClick.class, "doubleClick", MouseEvent.DoubleClick.class);
 
-    @Override
-    default void dispatch(final MouseEvent.MouseDown event) { onMouseDownEvent(event); }
+    void doubleClick(MouseEvent.DoubleClick event);
   }
 
   @FunctionalInterface
-  interface MouseMove extends Listener<MouseEvent.MouseMove> {
-    void onMouseMoveEvent(MouseEvent.MouseMove event);
+  public interface MouseDown {
+    Method METHOD = ReflectTools.findMethod(MouseDown.class, "mouseDown", MouseEvent.MouseDown.class);
 
-    @Override
-    default void dispatch(final MouseEvent.MouseMove event) { onMouseMoveEvent(event); }
+    void mouseDown(MouseEvent.MouseDown event);
   }
 
   @FunctionalInterface
-  interface MouseOver extends Listener<MouseEvent.MouseOver> {
-    void onMouseOverEvent(MouseEvent.MouseOver event);
+  public interface MouseMove {
+    Method METHOD = ReflectTools.findMethod(MouseMove.class, "mouseMove", MouseEvent.MouseMove.class);
 
-    @Override
-    default void dispatch(final MouseEvent.MouseOver event) { onMouseOverEvent(event); }
+    void mouseMove(MouseEvent.MouseMove event);
   }
 
   @FunctionalInterface
-  interface MouseOut extends Listener<MouseEvent.MouseOut> {
-    void onMouseOutEvent(MouseEvent.MouseOut event);
+  public interface MouseOver {
+    Method METHOD = ReflectTools.findMethod(MouseOver.class, "mouseOver", MouseEvent.MouseOver.class);
 
-    @Override
-    default void dispatch(final MouseEvent.MouseOut event) { onMouseOutEvent(event); }
+    void mouseOver(MouseEvent.MouseOver event);
   }
 
   @FunctionalInterface
-  interface MouseUp extends Listener<MouseEvent.MouseUp> {
-    void onMouseUpEvent(MouseEvent.MouseUp event);
+  public interface MouseOut {
+    Method METHOD = ReflectTools.findMethod(MouseOut.class, "mouseOut", MouseEvent.MouseOut.class);
 
-    @Override
-    default void dispatch(final MouseEvent.MouseUp event) { onMouseUpEvent(event); }
+    void mouseOut(MouseEvent.MouseOut event);
+  }
+
+  @FunctionalInterface
+  public interface MouseUp {
+    Method METHOD = ReflectTools.findMethod(MouseUp.class, "mouseUp", MouseEvent.MouseUp.class);
+
+    void mouseUp(MouseEvent.MouseUp event);
   }
 }

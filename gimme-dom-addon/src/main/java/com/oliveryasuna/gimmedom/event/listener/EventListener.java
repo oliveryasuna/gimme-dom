@@ -1,83 +1,75 @@
 package com.oliveryasuna.gimmedom.event.listener;
 
 import com.oliveryasuna.gimmedom.event.event.Event;
+import com.vaadin.util.ReflectTools;
 
-@FunctionalInterface
-public interface EventListener extends Listener<Event> {
-  void onEvent(Event event);
+import java.lang.reflect.Method;
 
-  @Override
-  default void dispatch(final Event event) { onEvent(event); }
-
-  @FunctionalInterface
-  interface CanPlayThrough extends Listener<Event.CanPlayThrough> {
-    void onCanPlayThroughEvent(Event.CanPlayThrough event);
-
-    @Override
-    default void dispatch(final Event.CanPlayThrough event) { onCanPlayThroughEvent(event); }
+public class EventListener {
+  private EventListener() {
+    throw new UnsupportedOperationException("Class cannot be instantiated.");
   }
 
   @FunctionalInterface
-  interface Change extends Listener<Event.Change> {
-    void onChangeEvent(Event.Change event);
+  public interface CanPlayThrough {
+    Method METHOD = ReflectTools.findMethod(CanPlayThrough.class, "canPlayThrough", Event.CanPlayThrough.class);
 
-    @Override
-    default void dispatch(final Event.Change event) { onChangeEvent(event); }
+    void canPlayThrough(Event.CanPlayThrough event);
   }
 
   @FunctionalInterface
-  interface Ended extends Listener<Event.Ended> {
-    void onEndedEvent(Event.Ended event);
+  public interface Change {
+    Method METHOD = ReflectTools.findMethod(Change.class, "change", Event.Change.class);
 
-    @Override
-    default void dispatch(final Event.Ended event) { onEndedEvent(event); }
+    void change(Event.Change event);
   }
 
   @FunctionalInterface
-  interface Error extends Listener<Event.Error> {
-    void onErrorEvent(Event.Error event);
+  public interface Ended {
+    Method METHOD = ReflectTools.findMethod(Ended.class, "ended", Event.Ended.class);
 
-    @Override
-    default void dispatch(final Event.Error event) { onErrorEvent(event); }
+    void ended(Event.Ended event);
   }
 
   @FunctionalInterface
-  interface Input extends Listener<Event.Input> {
-    void onInputEvent(Event.Input event);
+  public interface Error {
+    Method METHOD = ReflectTools.findMethod(Error.class, "error", Event.Error.class);
 
-    @Override
-    default void dispatch(final Event.Input event) { onInputEvent(event); }
+    void error(Event.Error event);
   }
 
   @FunctionalInterface
-  interface Load extends Listener<Event.Load> {
-    void onLoadEvent(Event.Load event);
+  public interface Input {
+    Method METHOD = ReflectTools.findMethod(Input.class, "input", Event.Input.class);
 
-    @Override
-    default void dispatch(final Event.Load event) { onLoadEvent(event); }
+    void input(Event.Input event);
   }
 
   @FunctionalInterface
-  interface LoadedMetadata extends Listener<Event.LoadedMetadata> {
-    void onLoadedMetadataEvent(Event.LoadedMetadata event);
+  public interface Load {
+    Method METHOD = ReflectTools.findMethod(Load.class, "load", Event.Load.class);
 
-    @Override
-    default void dispatch(final Event.LoadedMetadata event) { onLoadedMetadataEvent(event); }
+    void load(Event.Load event);
   }
 
   @FunctionalInterface
-  interface Progress extends Listener<Event.Progress> {
-    void onProgressEvent(Event.Progress event);
+  public interface LoadedMetadata {
+    Method METHOD = ReflectTools.findMethod(LoadedMetadata.class, "loadedMetadata", Event.LoadedMetadata.class);
 
-    @Override
-    default void dispatch(final Event.Progress event) { onProgressEvent(event); }
+    void loadedMetadata(Event.LoadedMetadata event);
   }
 
   @FunctionalInterface
-  interface Scroll extends Listener<Event.Scroll> {
-    void onScrollEvent(Event.Scroll event);
+  public interface Progress {
+    Method METHOD = ReflectTools.findMethod(Progress.class, "progress", Event.Progress.class);
 
-    @Override
-    default void dispatch(final Event.Scroll event) { onScrollEvent(event); }
+    void progress(Event.Progress event);
+  }
+
+  @FunctionalInterface
+  public interface Scroll {
+    Method METHOD = ReflectTools.findMethod(Scroll.class, "scroll", Event.Scroll.class);
+
+    void scroll(Event.Scroll event);
   }
 }

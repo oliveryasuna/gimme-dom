@@ -1,27 +1,26 @@
 package com.oliveryasuna.gimmedom.event.listener;
 
 import com.oliveryasuna.gimmedom.event.event.FocusEvent;
+import com.vaadin.util.ReflectTools;
 
-@FunctionalInterface
-public interface FocusListener extends Listener<FocusEvent> {
-  void onFocusEventBase(FocusEvent event);
+import java.lang.reflect.Method;
 
-  @Override
-  default void dispatch(final FocusEvent event) { onFocusEventBase(event); }
-
-  @FunctionalInterface
-  interface Blur extends Listener<FocusEvent.Blur> {
-    void onBlurEvent(FocusEvent.Blur event);
-
-    @Override
-    default void dispatch(final FocusEvent.Blur event) { onBlurEvent(event); }
+public class FocusListener {
+  private FocusListener() {
+    throw new UnsupportedOperationException("Class cannot be instantiated.");
   }
 
   @FunctionalInterface
-  interface Focus extends Listener<FocusEvent.Focus> {
-    void onFocusEvent(FocusEvent.Focus event);
+  public interface Blur {
+    Method METHOD = ReflectTools.findMethod(Blur.class, "blur", FocusEvent.Blur.class);
 
-    @Override
-    default void dispatch(final FocusEvent.Focus event) { onFocusEvent(event); }
+    void blur(FocusEvent.Blur event);
+  }
+
+  @FunctionalInterface
+  public interface Focus {
+    Method METHOD = ReflectTools.findMethod(Focus.class, "focus", FocusEvent.Focus.class);
+
+    void focus(FocusEvent.Focus event);
   }
 }
