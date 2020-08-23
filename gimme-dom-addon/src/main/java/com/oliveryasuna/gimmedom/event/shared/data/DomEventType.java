@@ -96,6 +96,7 @@ public enum DomEventType implements Serializable {
   onwaiting("waiting"),
   onwheel("wheel");
 
+  // TODO: Use Optional.
   public static DomEventType getById(final String id) {
     Objects.requireNonNull(id);
 
