@@ -1,4 +1,4 @@
-MIT License Modified
+MIT License
 
 Copyright (c) 2020 Oliver Yasuna
 
@@ -19,8 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-Modification:
-
-The above permissions are granted under the conditions above and the reinforced
-condition that attribution be made to the developer, Oliver Yasuna.
