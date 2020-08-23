@@ -5,7 +5,7 @@ import com.vaadin.server.AbstractExtension;
 import com.vaadin.ui.AbstractComponent;
 
 /**
- * The {@link GimmeEvent} extension.
+ * An extension to hook into more DOM events.
  *
  * @author Oliver Yasuna
  * @since 1.0.0
