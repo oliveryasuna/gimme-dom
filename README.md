@@ -1,6 +1,9 @@
 # Gimme DOM
 
 A Vaadin 8 extension enabling developers to have more control over the web DOM.
+<br/><br/><br/>
+**Overview:**
+* Add most DOM event listeners to any component.
 
 ## Why
 
