@@ -21,7 +21,7 @@
     <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
     <Implementation-Version>${project.version}</Implementation-Version>
     <Vaadin-Addon>${project.build.finalName}.jar</Vaadin-Addon>
-    <Vaadin-License-Title>MIT License Modified</Vaadin-License-Title>
+    <Vaadin-License-Title>MIT License</Vaadin-License-Title>
   </properties>
 
   <dependencies>

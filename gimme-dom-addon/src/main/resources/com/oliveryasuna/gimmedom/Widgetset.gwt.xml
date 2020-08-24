@@ -5,6 +5,9 @@
   <inherits name="com.vaadin.DefaultWidgetSet"/>
   <inherits name="com.oliveryasuna.gimmedom.Widgetset"/>
 
+  <source path="source/shared/"/>
+  <source path="source/client/"/>
+
   <source path="event/shared/"/>
   <source path="event/client/"/>
 </module>
