@@ -1,6 +1,7 @@
 package com.oliveryasuna.gimmedom.source.shared.data;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -30,6 +31,8 @@ public enum CssLengthUnit {
   PERCENT("%");
 
   public static Optional<CssLengthUnit> getBySymbol(final String symbol) {
+    Objects.requireNonNull(symbol);
+
     return Arrays.stream(values()).filter(cssLengthUnit -> cssLengthUnit.symbol.equals(symbol)).findFirst();
   }
 

@@ -1,7 +1,9 @@
 package com.oliveryasuna.gimmedom.event.shared.data;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Possible DOM event types.
@@ -96,20 +98,15 @@ public enum DomEventType implements Serializable {
   onwaiting("waiting"),
   onwheel("wheel");
 
-  // TODO: Use Optional.
-  public static DomEventType getById(final String id) {
-    Objects.requireNonNull(id);
+  public static Optional<DomEventType> getByValue(final String value) {
+    Objects.requireNonNull(value);
 
-    for(final DomEventType domEventType : values()) {
-      if(domEventType.id.equals(id)) return domEventType;
-    }
-
-    return null;
+    return Arrays.stream(values()).filter(domEventType -> domEventType.value.equals(value)).findFirst();
   }
 
-  private final String id;
+  private final String value;
 
-  DomEventType(final String id) { this.id = id; }
+  DomEventType(final String value) { this.value = value; }
 
-  public final String getId() { return id; }
+  public final String getValue() { return value; }
 }

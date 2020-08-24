@@ -1,7 +1,9 @@
 package com.oliveryasuna.gimmedom.event.shared.data;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Possible DOM MouseEvent button types.
@@ -16,21 +18,17 @@ public enum DomMouseButton implements Serializable {
   FOURTH_BUTTON(3),
   FIFTH_BUTTON(4);
 
-  public static DomMouseButton getById(final int id) {
-    Objects.requireNonNull(id);
+  public static Optional<DomMouseButton> getByValue(final int value) {
+    Objects.requireNonNull(value);
 
-    for(final DomMouseButton domMouseButton : values()) {
-      if(domMouseButton.id == id) return domMouseButton;
-    }
-
-    return null;
+    return Arrays.stream(values()).filter(domMouseButton -> domMouseButton.value == value).findFirst();
   }
 
-  private final int id;
+  private final int value;
 
-  DomMouseButton(final int id) { this.id = id; }
+  DomMouseButton(final int value) { this.value = value; }
 
-  public final int getId() {
-    return id;
+  public final int getValue() {
+    return value;
   }
 }
