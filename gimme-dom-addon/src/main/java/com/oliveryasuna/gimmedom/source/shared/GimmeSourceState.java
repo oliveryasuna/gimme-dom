@@ -3,7 +3,7 @@ package com.oliveryasuna.gimmedom.source.shared;
 import com.oliveryasuna.gimmedom.source.GimmeSource;
 import com.oliveryasuna.gimmedom.source.shared.data.DomDraggable;
 import com.oliveryasuna.gimmedom.source.shared.data.DomTextDirection;
-import com.vaadin.shared.AbstractComponentState;
+import com.vaadin.shared.communication.SharedState;
 
 /**
  * The {@link GimmeSource} state.
@@ -11,7 +11,7 @@ import com.vaadin.shared.AbstractComponentState;
  * @author Oliver Yasuna
  * @since 1.0.0
  */
-public class GimmeSourceState extends AbstractComponentState {
+public class GimmeSourceState extends SharedState {
   // TODO: There are more, and some of these aren't standard, they are part of GWT.
 
   public String id;
