@@ -1,5 +1,6 @@
 package com.oliveryasuna.gimmedom.source;
 
+import com.oliveryasuna.gimmedom.source.shared.GimmeSourceState;
 import com.vaadin.server.AbstractExtension;
 import com.vaadin.ui.AbstractComponent;
 
@@ -14,5 +15,10 @@ public class GimmeSource extends AbstractExtension {
 
   public GimmeSource(final AbstractComponent component) {
     extend(this.component = component);
+  }
+
+  @Override
+  protected GimmeSourceState getState() {
+    return (GimmeSourceState)super.getState();
   }
 }

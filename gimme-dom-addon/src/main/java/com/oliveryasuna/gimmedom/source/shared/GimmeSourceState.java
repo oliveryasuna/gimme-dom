@@ -1,10 +1,9 @@
 package com.oliveryasuna.gimmedom.source.shared;
 
 import com.oliveryasuna.gimmedom.source.GimmeSource;
-import com.oliveryasuna.gimmedom.source.shared.data.DomNodeType;
-import com.vaadin.shared.communication.SharedState;
-
-import java.io.Serializable;
+import com.oliveryasuna.gimmedom.source.shared.data.DomDraggable;
+import com.oliveryasuna.gimmedom.source.shared.data.DomTextDirection;
+import com.vaadin.shared.AbstractComponentState;
 
 /**
  * The {@link GimmeSource} state.
@@ -12,30 +11,40 @@ import java.io.Serializable;
  * @author Oliver Yasuna
  * @since 1.0.0
  */
-public class GimmeSourceState extends SharedState implements Serializable {
-  // Node.
+public class GimmeSourceState extends AbstractComponentState {
+  // TODO: There are more, and some of these aren't standard, they are part of GWT.
 
-  public String baseUri;
-
-  public String nodeName;
-  public DomNodeType nodeType;
-
-  // Element.
-
-  public String tagName;
   public String id;
-  public String className;
+  public String[] classNames;
+  public String tagName;
+  public String title;
+  public String lang;
 
   public String innerHtml;
-  public String outerHtml;
+  public String innerText;
 
-  public double clientLeft;
-  public double clientTop;
-  public double clientWidth;
-  public double clientHeight;
+  public int tabIndex;
 
-  public double scrollLeft;
-  public double scrollTop;
-  public double scrollWidth;
-  public double scrollHeight;
+  public DomTextDirection dir;
+  public DomDraggable draggable;
+
+  public int absoluteTop;
+  public int absoluteRight;
+  public int absoluteBottom;
+  public int absoluteLeft;
+
+  public int offsetLeft;
+  public int offsetTop;
+  public int offsetWidth;
+  public int offsetHeight;
+
+  public int scrollLeft;
+  public int scrollTop;
+  public int scrollWidth;
+  public int scrollHeight;
+
+  public int clientWidth;
+  public int clientHeight;
+
+  public String toString;
 }

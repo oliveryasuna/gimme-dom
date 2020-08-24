@@ -1,6 +1,8 @@
 package com.oliveryasuna.gimmedom.source.shared.data;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Optional;
 
 /**
  * Possible Node types.
@@ -21,6 +23,10 @@ public enum DomNodeType implements Serializable {
   DOCUMENT_TYPE_NODE(10),
   DOCUMENT_FRAGMENT_NODE(11),
   NOTATION_NODE(12);
+
+  public static Optional<DomNodeType> getById(final int id) {
+    return Arrays.stream(values()).filter(domNodeType -> domNodeType.id == id).findFirst();
+  }
 
   private final int id;
 
